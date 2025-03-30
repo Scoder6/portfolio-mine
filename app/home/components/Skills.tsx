@@ -4,13 +4,21 @@ import Title from "@/app/home/components/Title";
 import {HoverEffect} from "@/components/ui/card-hover-effect";
 import {
     SiAngular,
-    SiApifox,
-    SiExpress, SiGit, SiIonic,
+    SiExpress,
+    SiGit,
+    SiIonic,
     SiNextdotjs,
     SiReact,
-    SiRedux, SiSpringboot,
+    SiGo,
+    SiSpringboot,
     SiTailwindcss,
-    SiTypescript
+    SiTypescript,
+    SiNodedotjs,
+    SiCplusplus,
+    SiKotlin,
+    SiFirebase,
+    SiCloudinary
+
 } from "react-icons/si";
 
 export default function Skills() {
@@ -19,35 +27,64 @@ export default function Skills() {
         {
             text: "React",
             Icon: SiReact,
-        },{
+        },
+        {
             text: "Next.js",
             Icon: SiNextdotjs,
-        },{
+        },
+        {
             text: "Angular",
             Icon: SiAngular,
-        },{
-            text: "Redux",
-            Icon: SiRedux,
-        },{
+        },
+        {
+            text: "Go",
+            Icon: SiGo,
+        },
+        {
             text: "TypeScript",
             Icon: SiTypescript,
-        },{
+        },
+        {
             text: "Tailwind CSS",
             Icon: SiTailwindcss,
-        },{
+        },
+        {
             text: "Express.js",
             Icon: SiExpress,
-        },{
+        },
+        {
             text: "SpringBoot",
             Icon: SiSpringboot,
-        },{
+        },
+        {
             text: "Ionic",
             Icon: SiIonic,
-        },{
+        },
+        {
             text: "Git",
             Icon: SiGit,
+        },
+        {
+            text: "Node.js",
+            Icon: SiNodedotjs,
+        },
+        {
+            text: "C/C++",
+            Icon: SiCplusplus,
+        },
+        {
+            text: "Kotlin",
+            Icon: SiKotlin,
+        },
+        {
+            text: "Firebase",
+            Icon: SiFirebase,
+        },
+        {
+            text: "Cloudinary",
+            Icon: SiCloudinary,
         }
-    ]
+    ];
 
     return(
         <div className="max-w-5xl mx-auto px-8">
