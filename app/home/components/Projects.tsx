@@ -1,7 +1,8 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
+import Image from 'next/image';
 import { FiChevronLeft, FiChevronRight, FiX } from 'react-icons/fi';
 
 interface Project {
@@ -15,7 +16,7 @@ interface Project {
     isMobileScreenshot?: boolean;
     autoSlide?: boolean;
     isPrivate?: boolean;
-    hasLongDescription?: boolean; // New prop to identify projects with long descriptions
+    hasLongDescription?: boolean;
 }
 
 const Projects = () => {
@@ -27,7 +28,8 @@ const Projects = () => {
     const [showPrivateProjectModal, setShowPrivateProjectModal] = useState(false);
     const [expandedDescriptions, setExpandedDescriptions] = useState<Record<number, boolean>>({});
 
-    const projects: Project[] = [
+    // Wrap projects in useMemo to prevent unnecessary recreations
+    const projects = useMemo(() => [
         {
             id: 1,
             title: 'Andaman Atolls',
@@ -79,7 +81,7 @@ const Projects = () => {
             isPrivate: true,
             hasLongDescription: true
         },
-    ];
+    ], []);
 
     // Initialize auto-slide indices
     useEffect(() => {
@@ -90,7 +92,7 @@ const Projects = () => {
             }
         });
         setAutoSlideIndices(indices);
-    }, []);
+    }, [projects]); // Add projects to dependencies
 
     // Auto-slide effect
     useEffect(() => {
@@ -107,7 +109,7 @@ const Projects = () => {
                     });
                     return newIndices;
                 });
-            }, 2500); // Change images every 2.5 seconds
+            }, 2500);
 
             return () => clearInterval(interval);
         }
@@ -194,9 +196,11 @@ const Projects = () => {
                             <div className={`relative ${project.isMobileScreenshot ? 'h-64' : 'h-48'} overflow-hidden`}>
                                 {Array.isArray(project.imageUrl) ? (
                                     <>
-                                        <img
+                                        <Image
                                             src={getDisplayImage(project)}
                                             alt={project.title}
+                                            width={500}
+                                            height={300}
                                             className={`w-full ${project.isMobileScreenshot ? 'h-auto max-h-full object-contain' : 'h-full object-cover'} 
                                                       hover:scale-105 transition-transform duration-300 cursor-pointer`}
                                             onClick={() => openImageViewer(project)}
@@ -212,9 +216,11 @@ const Projects = () => {
                                         </div>
                                     </>
                                 ) : (
-                                    <img
+                                    <Image
                                         src={project.imageUrl}
                                         alt={project.title}
+                                        width={500}
+                                        height={300}
                                         className={`w-full ${project.isMobileScreenshot ? 'h-auto max-h-full object-contain' : 'h-full object-cover'} 
                                                   hover:scale-105 transition-transform duration-300 cursor-pointer`}
                                         onClick={() => openImageViewer(project)}
@@ -307,9 +313,11 @@ const Projects = () => {
                         </button>
 
                         <div className="relative max-w-4xl w-full">
-                            <img
+                            <Image
                                 src={currentProjectImages[currentImageIndex]}
                                 alt={`${currentProject.title} image ${currentImageIndex + 1}`}
+                                width={800}
+                                height={600}
                                 className={`w-full h-auto ${currentProject.isMobileScreenshot ? 'max-h-[90vh] object-contain' : 'max-h-[80vh] object-contain'} rounded-lg`}
                             />
 
@@ -355,8 +363,8 @@ const Projects = () => {
 
                             <h3 className="text-2xl font-bold mb-4 text-purple-400">Project Access Restricted</h3>
                             <p className="text-gray-300 mb-6">
-                                Due to company policies, the code and live demo cannot be viewed publicly.
-                                If you would like to see this project, please contact me at
+                                Due to company's policies, the code and live demo cannot be viewed publicly.
+                                If you'd like to see this project, please contact me at
                                 <a href="mailto:matulchaubey669@gmail.com" className="text-purple-400 hover:underline ml-1">
                                     matulchaubey669@gmail.com
                                 </a>
