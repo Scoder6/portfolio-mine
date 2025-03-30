@@ -1,13 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-    allowedDevOrigins: ['local-origin.dev', 'local-origin.dev'],
     output: 'export',
     distDir: 'out',
-    images:{
-        unoptimized:true,
+    images: {
+        unoptimized: true,
     },
-  /* config options here */
+    basePath: process.env.NODE_ENV === "production" ? '/portfolio-mine' : '', // Just use the repo name
 };
 
 export default nextConfig;
