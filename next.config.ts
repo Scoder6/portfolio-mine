@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-    allowedDevOrigins: ['local-origin.dev', 'local-origin.dev', 'http://192.168.1.6:3000/']
+    allowedDevOrigins: ['local-origin.dev', 'local-origin.dev'],
+    output: 'export',
+    distDir: 'out',
+    images:{
+        unoptimized:true,
+    },
   /* config options here */
 };
 
