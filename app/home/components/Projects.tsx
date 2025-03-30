@@ -355,8 +355,8 @@ const Projects = () => {
 
                             <h3 className="text-2xl font-bold mb-4 text-purple-400">Project Access Restricted</h3>
                             <p className="text-gray-300 mb-6">
-                                Due to company's policies, the code and live demo cannot be viewed publicly.
-                                If you'd like to see this project, please contact me at
+                                Due to company policies, the code and live demo cannot be viewed publicly.
+                                If you would like to see this project, please contact me at
                                 <a href="mailto:matulchaubey669@gmail.com" className="text-purple-400 hover:underline ml-1">
                                     matulchaubey669@gmail.com
                                 </a>
