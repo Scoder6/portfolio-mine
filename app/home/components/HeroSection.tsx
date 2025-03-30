@@ -21,7 +21,7 @@ export default function HeroSection() {
 
                 <Link href={"mailto:matulchaubey669@gmail.com"} className="inline-block group">
 
-                 <Title text={'Contact Me 📬'}/>
+                 <Title className="mb-10" text={'Contact Me 📬'}/>
 
                 </Link>
 
