@@ -46,7 +46,7 @@ export default function TermsPage() {
                 <section className="mb-8">
                     <h2 className="text-2xl font-semibold mb-4">5. Disclaimer</h2>
                     <p>
-                        The materials on this website are provided "as is". I make no warranties, expressed or implied, and hereby disclaim all other warranties including, without limitation, implied warranties.
+                        The materials on this website are provided &quot;as is&quot;. I make no warranties, expressed or implied, and hereby disclaim all other warranties including, without limitation, implied warranties.
                     </p>
                 </section>
 

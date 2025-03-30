@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
-import { FaCode, FaServer, FaMobile, FaPalette, FaShieldAlt, FaRocket } from 'react-icons/fa';
+import { FaCode, FaServer, FaPalette, FaShieldAlt, FaRocket } from 'react-icons/fa';
 import { SiFigma, SiNextdotjs, SiReact, SiNodedotjs, SiMongodb, SiPostgresql, SiFirebase, SiVercel } from 'react-icons/si';
+import ContactButton from '@/app/terms/ContactButton'
 
 export const metadata: Metadata = {
     title: 'Services | Full Stack Development Offerings',
@@ -88,6 +89,7 @@ export default function ServicesPage() {
         }
     ];
 
+
     return (
         <main className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
@@ -140,7 +142,7 @@ export default function ServicesPage() {
                     <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
                         <h3 className="font-semibold mb-2">1. Discovery Phase</h3>
                         <p className="text-gray-600 dark:text-gray-300">
-                            Requirements analysis, wireframing, and technical planning
+                            Requirements analysis, wireframing and technical planning
                         </p>
                     </div>
                     <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
@@ -163,9 +165,7 @@ export default function ServicesPage() {
                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
                     I can adapt to your project needs, whether you need a complete solution or specific expertise.
                 </p>
-                <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
-                    Get in Touch
-                </button>
+                <ContactButton/>
             </div>
         </main>
     );
