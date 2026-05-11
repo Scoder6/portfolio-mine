@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saptash Chaubey - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            padding: 20px;
+        }
+        
+        .cv-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 20px;
+        }
+        
+        .name {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #007acc;
+            margin-bottom: 5px;
+        }
+        
+        .title {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .contact {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            color: #555;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #007acc;
+            margin-bottom: 15px;
+            border-left: 4px solid #007acc;
+            padding-left: 10px;
+        }
+        
+        .item {
+            margin-bottom: 15px;
+        }
+        
+        .item-title {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .item-subtitle {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .item-date {
+            color: #888;
+            float: right;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill {
+            background: #007acc;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        
+        .education-item, .experience-item {
+            margin-bottom: 20px;
+        }
+        
+        .education-item h3, .experience-item h3 {
+            color: #007acc;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+            }
+            .cv-container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <div class="header">
+            <div class="name">Saptash Chaubey</div>
+            <div class="title">Full Stack Developer</div>
+            <div class="contact">
+                <div class="contact-item">📧 saptashchaubey@gmail.com</div>
+                <div class="contact-item">📱 +91 6354298401</div>
+                <div class="contact-item">📍 Delhi, India</div>
+                <div class="contact-item">🔗 linkedin.com/in/saptash-chaubey</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Professional Summary</div>
+            <p>Passionate Full Stack Developer with expertise in modern web technologies. Experienced in building scalable applications, implementing AI solutions, and creating engaging user interfaces. Strong problem-solving skills with a focus on clean, efficient code.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Technical Skills</div>
+            <div class="skills">
+                <span class="skill">JavaScript</span>
+                <span class="skill">TypeScript</span>
+                <span class="skill">React</span>
+                <span class="skill">Next.js</span>
+                <span class="skill">Node.js</span>
+                <span class="skill">Python</span>
+                <span class="skill">Java</span>
+                <span class="skill">C++</span>
+                <span class="skill">MongoDB</span>
+                <span class="skill">PostgreSQL</span>
+                <span class="skill">Git</span>
+                <span class="skill">Docker</span>
+                <span class="skill">AWS</span>
+                <span class="skill">Machine Learning</span>
+                <span class="skill">Data Structures</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Experience</div>
+            <div class="experience-item">
+                <div class="item-title">Full Stack Developer</div>
+                <div class="item-subtitle">Tech Company</div>
+                <div class="item-date">2022 - Present</div>
+                <p>Developed scalable web applications using React, Next.js, and Node.js. Implemented RESTful APIs, designed database schemas, and optimized application performance. Led development of AI-powered features and integrated machine learning models.</p>
+            </div>
+            <div class="experience-item">
+                <div class="item-title">Software Engineer Intern</div>
+                <div class="item-subtitle">Startup Inc</div>
+                <div class="item-date">2021 - 2022</div>
+                <p>Built RESTful APIs and implemented frontend features using React and TypeScript. Contributed to code review processes and improved application security. Developed automated testing suites.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Education</div>
+            <div class="education-item">
+                <div class="item-title">Bachelor of Technology</div>
+                <div class="item-subtitle">Computer Science & Engineering</div>
+                <div class="item-date">2019 - 2023</div>
+                <p>Specialized in Artificial Intelligence and Machine Learning. GPA: 8.5/10. Relevant coursework: Data Structures, Algorithms, Machine Learning, Database Systems, Web Development.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Key Projects</div>
+            <div class="item">
+                <div class="item-title">Chess Master AI</div>
+                <div class="item-subtitle">Advanced chess game with AI opponent</div>
+                <p>Built a fully functional chess game using React and TypeScript. Implemented AI opponent using minimax algorithm with alpha-beta pruning. Features include drag-and-drop interface, move validation, and real-time gameplay.</p>
+            </div>
+            <div class="item">
+                <div class="item-title">Portfolio Website</div>
+                <div class="item-subtitle">Personal portfolio with modern design</div>
+                <p>Created a responsive portfolio website showcasing projects and skills. Implemented using Next.js, Tailwind CSS, and modern web technologies. Features smooth animations and interactive components.</p>
+            </div>
+            <div class="item">
+                <div class="item-title">AI Chat Assistant</div>
+                <div class="item-subtitle">Intelligent conversational AI</div>
+                <p>Developed a chat assistant using natural language processing. Implemented context-aware responses and integration with various APIs. Built using Python, React, and machine learning libraries.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Achievements</div>
+            <div class="item">
+                <div class="item-title">• Winner, Hackathon 2022</div>
+                <p>First place in university hackathon for AI-powered project</p>
+            </div>
+            <div class="item">
+                <div class="item-title">• Open Source Contributor</div>
+                <p>Active contributor to various open-source projects on GitHub</p>
+            </div>
+            <div class="item">
+                <div class="item-title">• Technical Blog Writer</div>
+                <p>Published articles on web development and AI topics</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

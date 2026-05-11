@@ -81,6 +81,26 @@ const Projects = () => {
             isPrivate: true,
             hasLongDescription: true
         },
+        {
+            id: 5,
+            title: 'Modern Dashboard',
+            description: 'A comprehensive analytics dashboard built with Next.js, featuring real-time data visualization, dark mode support, and responsive design. Includes interactive charts and data tables.',
+            tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Recharts', 'Shadcn'],
+            imageUrl: '/file.svg',
+            projectUrl: '#',
+            githubUrl: 'https://github.com/Scoder6',
+            hasLongDescription: false
+        },
+        {
+            id: 6,
+            title: 'E-Commerce API',
+            description: 'A scalable REST API built with Node.js and Express, featuring JWT authentication, MongoDB integration, payment processing with Stripe, and comprehensive error handling.',
+            tags: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Stripe', 'REST API'],
+            imageUrl: '/file.svg',
+            projectUrl: '#',
+            githubUrl: 'https://github.com/Scoder6',
+            hasLongDescription: false
+        },
     ], []);
 
     // Initialize auto-slide indices
@@ -165,7 +185,7 @@ const Projects = () => {
     };
 
     return (
-        <div className="min-h-screen bg-black text-white">
+        <div className="min-h-screen bg-background text-foreground">
             <Head>
                 <title>My Projects | Portfolio</title>
                 <meta name="description" content="Check out my development projects" />
@@ -181,7 +201,7 @@ const Projects = () => {
                     <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
                         My Projects
                     </h1>
-                    <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                         Here are some of my recent works.
                     </p>
                 </motion.div>
@@ -191,7 +211,7 @@ const Projects = () => {
                         <motion.div
                             key={project.id}
                             whileHover={{ scale: 1.03 }}
-                            className="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-800 hover:border-purple-500"
+                            className="bg-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-border hover:border-purple-500"
                         >
                             <div className={`relative ${project.isMobileScreenshot ? 'h-64' : 'h-48'} overflow-hidden`}>
                                 {Array.isArray(project.imageUrl) ? (
@@ -205,7 +225,7 @@ const Projects = () => {
                                                       hover:scale-105 transition-transform duration-300 cursor-pointer`}
                                             onClick={() => openImageViewer(project)}
                                             onError={(e) => {
-                                                (e.target as HTMLImageElement).src = '/images/file.svg';
+                                                (e.target as HTMLImageElement).src = '/file.svg';
                                             }}
                                         />
                                         <div
@@ -225,7 +245,7 @@ const Projects = () => {
                                                   hover:scale-105 transition-transform duration-300 cursor-pointer`}
                                         onClick={() => openImageViewer(project)}
                                         onError={(e) => {
-                                            (e.target as HTMLImageElement).src = '/images/file.svg';
+                                            (e.target as HTMLImageElement).src = '/file.svg';
                                         }}
                                     />
                                 )}
@@ -242,7 +262,7 @@ const Projects = () => {
                                 >
                                     <AnimatePresence>
                                         <motion.p
-                                            className="text-gray-400 overflow-hidden"
+                                            className="text-muted-foreground overflow-hidden"
                                             initial={{ height: '3em' }}
                                             animate={{
                                                 height: expandedDescriptions[project.id] ? 'auto' : '3em',
@@ -256,7 +276,7 @@ const Projects = () => {
 
                                     {project.hasLongDescription && (
                                         <motion.div
-                                            className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none"
+                                            className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-card to-transparent pointer-events-none"
                                             initial={{ opacity: 1 }}
                                             animate={{
                                                 opacity: expandedDescriptions[project.id] ? 0 : 1,
@@ -270,7 +290,7 @@ const Projects = () => {
                                     {project.tags.map((tag, index) => (
                                         <span
                                             key={index}
-                                            className="px-3 py-1 bg-gray-800 rounded-full text-sm text-purple-300"
+                                            className="px-3 py-1 bg-secondary rounded-full text-sm text-purple-400"
                                         >
                                             {tag}
                                         </span>
@@ -291,7 +311,7 @@ const Projects = () => {
                                         href={project.githubUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex-1 bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 rounded-lg text-center transition-colors"
+                                        className="flex-1 bg-secondary hover:bg-secondary/80 text-foreground py-2 px-4 rounded-lg text-center transition-colors"
                                         onClick={(e) => handleProjectLinkClick(e, project)}
                                     >
                                         View Code
@@ -353,16 +373,16 @@ const Projects = () => {
                 {/* Private Project Modal */}
                 {showPrivateProjectModal && (
                     <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
-                        <div className="bg-gray-900 rounded-xl p-6 max-w-md w-full relative border border-purple-500">
+                        <div className="bg-card rounded-xl p-6 max-w-md w-full relative border border-purple-500">
                             <button
                                 onClick={() => setShowPrivateProjectModal(false)}
-                                className="absolute top-4 right-4 text-white text-2xl"
+                                className="absolute top-4 right-4 text-foreground text-2xl"
                             >
                                 <FiX size={24} />
                             </button>
 
                             <h3 className="text-2xl font-bold mb-4 text-purple-400">Project Access Restricted</h3>
-                            <p className="text-gray-300 mb-6">
+                            <p className="text-muted-foreground mb-6">
                                 Due to company policies, the code and live demo cannot be viewed publicly.
                                 If you would like to see this project, please contact me at
                                 <a href="mailto:matulchaubey669@gmail.com" className="text-purple-400 hover:underline ml-1">

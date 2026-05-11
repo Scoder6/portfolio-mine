@@ -1,16 +1,17 @@
 'use client'
 import Link from 'next/link';
 import React from 'react';
-import { SiGeeksforgeeks, SiGithub, SiLinkedin } from "react-icons/si";
+import { SiGeeksforgeeks, SiGithub } from "react-icons/si";
 import { MdEmail } from "react-icons/md";
 import { motion } from "framer-motion";
+import LinkedinIcon from "./LinkedinIcon";
 
 export default function Footer() {
     const socials = [
         {
-            link: "https://www.linkedin.com/in/saptash-chaubey-711a3322a/",
+            link: "https://www.linkedin.com/in/saptash-chaubey-624b33408/",
             label: "LinkedIn",
-            Icon: SiLinkedin,
+            Icon: LinkedinIcon,
             color: "text-blue-600 hover:text-blue-500",
         },
         {
@@ -34,7 +35,7 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="bg-gray-100 dark:bg-gray-900 py-8 mt-16 border-t border-gray-200 dark:border-gray-800">
+        <footer id="mailbox" className="bg-gray-100 dark:bg-gray-900 py-8 mt-16 border-t border-gray-200 dark:border-gray-800">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col items-center">
                     {/* Social Links */}
