@@ -39,7 +39,7 @@ export default function MusicPlayer() {
     if (!audioContextRef.current) {
       const AudioContextClass =
         window.AudioContext ||
-        (window as any).webkitAudioContext;
+        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
 
       audioContextRef.current = new AudioContextClass();
     }

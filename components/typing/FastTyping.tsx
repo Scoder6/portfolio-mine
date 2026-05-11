@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Keyboard } from 'lucide-react';
+import { Zap } from 'lucide-react';
 
 const FastTyping = () => {
   const [typedText, setTypedText] = useState('');

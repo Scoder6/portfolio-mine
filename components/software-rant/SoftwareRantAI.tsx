@@ -8,16 +8,13 @@ const SoftwareRantAI = () => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [currentRant, setCurrentRant] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [voiceSettings, setVoiceSettings] = useState({
+  const [voiceSettings] = useState({
     rate: 0.85,
     pitch: 0.75,
     volume: 1.0
   });
-  const [selectedVoice, setSelectedVoice] = useState<string>('');
-  const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
-  const [isTyping, setIsTyping] = useState(false);
-  const [typingText, setTypingText] = useState('');
-  const [currentTypingIndex, setCurrentTypingIndex] = useState(0);
+  const [, setSelectedVoice] = useState<string>('');
+  const [, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
   const speechRef = useRef<SpeechSynthesisUtterance | null>(null);
   const synthRef = useRef<SpeechSynthesis | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
@@ -109,7 +106,7 @@ const SoftwareRantAI = () => {
     // Initialize audio context with better error handling
     const initAudioContext = () => {
       try {
-        const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+        const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
         if (AudioContextClass) {
           audioContextRef.current = new AudioContextClass();
           analyserRef.current = audioContextRef.current.createAnalyser();
@@ -219,7 +216,7 @@ const SoftwareRantAI = () => {
     };
 
     // Add progress tracking
-    utterance.onboundary = (event) => {
+    utterance.onboundary = () => {
       // Visual feedback for speech progress
       if (analyserRef.current && audioContextRef.current) {
         // Create audio visualization data
@@ -264,44 +261,6 @@ const SoftwareRantAI = () => {
   };
 
   const currentRantData = rants[currentRant];
-
-  // Crazy fast typing function
-  const startCrazyTyping = () => {
-    if (isTyping) return;
-    
-    setIsTyping(true);
-    setTypingText('');
-    setCurrentTypingIndex(0);
-    
-    const fullText = currentRantData.content;
-    const words = fullText.split(' ');
-    let currentWordIndex = 0;
-    
-    const typeNextWord = () => {
-      if (currentWordIndex < words.length) {
-        setTypingText(prev => {
-          const newText = words.slice(0, currentWordIndex + 1).join(' ');
-          return newText + (currentWordIndex < words.length - 1 ? ' ' : '');
-        });
-        currentWordIndex++;
-        
-        // Type next word after very short delay (20+ words per second = 50ms per word)
-        if (currentWordIndex < words.length) {
-          setTimeout(typeNextWord, 30 + Math.random() * 20); // 30-50ms per word
-        } else {
-          setTimeout(() => {
-            setIsTyping(false);
-            // Start speaking after typing is done
-            setTimeout(() => {
-              speak(fullText);
-            }, 500);
-          }, 300);
-        }
-      }
-    };
-    
-    typeNextWord();
-  };
 
   return (
     <div className="flex flex-col items-center justify-center h-full bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-8">
@@ -448,40 +407,11 @@ const SoftwareRantAI = () => {
           </div>
         </div>
 
-        {/* Typing Display or Rant Text */}
+        {/* Rant Text */}
         <div className="bg-slate-900/50 rounded-2xl p-6 mb-6 border border-slate-700/50">
-          {isTyping ? (
-            <div className="space-y-4">
-              <h4 className="text-white font-semibold mb-4 flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center animate-pulse">
-                  <span className="text-white text-xs font-bold">CRAZY</span>
-                </div>
-                AI is typing like crazy!
-              </h4>
-              <div className="bg-black/80 rounded-lg p-4 font-mono text-green-400 min-h-[120px]">
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-500">{'>'}</span>
-                  <span className="relative">
-                    {typingText}
-                    <motion.div
-                      className="absolute right-0 top-0 w-2 h-4 bg-green-400 animate-pulse"
-                      animate={{ opacity: [1, 0.5, 1] }}
-                      transition={{ duration: 0.1, repeat: Infinity }}
-                    />
-                  </span>
-                </div>
-              </div>
-              <div className="text-center text-sm text-gray-400">
-                Typing speed: {Math.round((typingText.split(' ').length / Math.max(1, (Date.now() - currentTypingIndex * 30) / 1000)) * 60)} words per second
-              </div>
-            </div>
-          ) : (
-            <div>
-              <p className="text-gray-100 leading-relaxed text-lg whitespace-pre-line">
-                {currentRantData.content}
-              </p>
-            </div>
-          )}
+          <p className="text-gray-100 leading-relaxed text-lg whitespace-pre-line">
+            {currentRantData.content}
+          </p>
         </div>
 
         
